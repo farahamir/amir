@@ -16,8 +16,6 @@ import java.util.HashSet;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-	private static final Logger logger = LoggerFactory.getLogger(Application.class);
-
 	@Autowired
 	private ProductRepository productRepository;
 
