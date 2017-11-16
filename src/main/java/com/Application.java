@@ -1,6 +1,5 @@
 package com;
 
-import com.jpa.CategoryRepository;
 import com.jpa.ProductRepository;
 import com.model.Category;
 import com.model.Product;
@@ -13,7 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
-import java.util.Set;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
