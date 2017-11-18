@@ -20,6 +20,7 @@ It will start the embedded tomcat server on default port 8080
 - Junit
 - Embedded tomcat Server
 - H2 DB
+- JPA
 - MockMvc
 - Logs4j
 
