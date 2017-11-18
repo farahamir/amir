@@ -1,19 +1,18 @@
 var categoryList = {};
 $( document ).ready(function() {
     $.ajax({
-        url: window.location.href+"rest/api/products"
-    }).then(function(response) {
-        for (var i = 0; i < response.length; i++) {
-            drawRow(response[i]);
-        }
-    });
-
-    $.ajax({
         url: window.location.href+"rest/api/categoryList"
     }).then(function(response) {
         for (var i = 0; i < response.length; i++) {
             categoryList[response[i].id] = response[i].name;
         }
+        $.ajax({
+            url: window.location.href+"rest/api/products"
+        }).then(function(response) {
+            for (var i = 0; i < response.length; i++) {
+                drawRow(response[i]);
+            }
+        });
     });
     //editing row
     var $tableBody = $("#table-body");
@@ -110,7 +109,7 @@ function drawRow(rowData) {
     $tr.append(
         $('<td />', {id: 'id-'+rowData.id, value: rowData.id, text: rowData.id}).
         add($('<td />', { text: rowData.name})).
-        add($('<td />', { text: rowData.category.name})).
+        add($('<td />', { text: categoryList[rowData.category]||rowData.category.name})).
         add($('<td />', { text: rowData.price})).
         add($('<input />', { type: "button", id: 'edit-id-'+rowData.id, value: "Edit" ,class: 'Edit'})).
         add($('<input />', { type: "button", id: 'delete-id-'+rowData.id, value: "Delete" , class:'Delete'}))

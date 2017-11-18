@@ -3,8 +3,6 @@ package com;
 import com.jpa.ProductRepository;
 import com.model.Category;
 import com.model.Product;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -47,9 +45,20 @@ public class Application implements CommandLineRunner {
 			add(product3);
 		}});
 		Product product4 = new Product("Product 4", categoryA, 6000.0);
-
 		productRepository.save(new HashSet<Product>() {{
 			add(product4);
+		}});
+		Category categoryB = new Category("Category B");
+		Product product5 = new Product("Product 5", categoryB, 320.0);
+		Product product6 = new Product("Product 6", categoryB, 600.0);
+		HashSet<Product> products2 = new HashSet<Product>(){{
+			add(product5);
+			add(product6);
+		}};
+		categoryB.setProducts(products2);
+		productRepository.save(new HashSet<Product>() {{
+			add(product5);
+			add(product6);
 		}});
 	}
 }
